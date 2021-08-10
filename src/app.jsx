@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-function render() {
-  ReactDOM.render(<h2>Hello from React!</h2>, document.body);
-}
-
-render();
+ReactDOM.render(
+    <React.StrictMode>
+        <h2>Hello from React!</h2>
+    </React.StrictMode>,
+    document.getElementById('root')
+);
