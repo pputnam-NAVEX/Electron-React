@@ -1,0 +1,44 @@
+React + Electron + Webpack + Babel
+
+1. $ npx create-electron-app _newAppName_ --template=webpack
+
+2. $ npm install --save-dev @babel/core @babel/preset-react babel-loader
+
+3. In webpack.rules.js
+module.exports = [
+  // ... existing loader config ...
+  {
+    test: /\.jsx?$/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        exclude: /node_modules/,
+        presets: ['@babel/preset-react']
+      }
+    }
+  },
+  // ... existing loader config ...
+]
+
+4. npm install --save react react-dom
+
+5. In src/app.jsx
+
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+
+function render() {
+  ReactDOM.render(<h2>Hello from React!</h2>, document.body);
+}
+
+render();
+
+6. In src/renderer.js
+
+// Add this to the end of the existing file
+import './app.jsx';
+
+Sources:
+
+1. https://www.electronforge.io/templates/webpack-template
+2. & 3. https://www.electronforge.io/guides/framework-integration/react
